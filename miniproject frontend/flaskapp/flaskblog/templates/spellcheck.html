@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    #wrong{
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+        text-decoration-color: red;
+    }
+</style>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Check Your Text</legend>
+            <div class="form-group">
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
+                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {% if is_wrong %}
+                        <div id="wrong">{{ form.content(class="form-control form-control-lg") }}</div>
+                    {% else %}
+                        {{ form.content(class="form-control form-control-lg ") }}
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            {% if lis%}
+                <div class="content-section">
+                    <h3>Pick the right word from the below list</h3>
+                        {% for i in lis %}
+                        {% for j in i%}
+                            <span>{{j}}</span>
+                        {%endfor%}
+                        <br>
+                        {% endfor %}
+                        <hr>
+                        <h6>No of correct words : {{ no_of_correct }}</h6>
+                        <h6>No of wrong words : {{ no_of_wrong}}</h6>  
+                </div>
+            {% else %}
+                <div class="content-section">
+                    <h6>No of correct words : {{ no_of_correct }}</h6>
+                    <h6>No of wrong words : {{ no_of_wrong}}</h6> 
+                </div>
+            {% endif %}
+        </fieldset>
+    </form>
+</div>
+{% endblock content %}

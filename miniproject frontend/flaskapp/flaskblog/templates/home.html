@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+  .button {
+border-radius: 15px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 25px;
+padding: 20px;
+width: 200px;
+transition: all 0.5s;
+cursor: pointer;
+}
+
+.button span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.button span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.button:hover span {
+padding-right: 25px;
+}
+
+.button:hover span:after {
+opacity: 1;
+right: 0;
+}
+a{
+  float: right;
+  padding-left: 50px;
+
+}
+
+
+</style>
+<div >
+      <h2>Who Needs a Grammar Checker</h2>
+      <p>
+        <a href="{{ url_for('spellcheck') }}"><button class="button"><span>Spell check!</span></button></a>
+        <a href="{{ url_for('grammar_check') }}"><button class="button"><span>Grammar check!</span></button></a>
+        Teachers and instructors expect your papers to be error-free. But let's face it, 
+        even native English speakers are prone to silly mistakes.
+         That's why proofreading is absolutely critical in ensuring your work is perfect.
+        Yes, even expert writers sometimes get tripped up over the details of English. 
+        If you work with an editor, little blips aren't that important.
+         If you have to edit your own work, our automated proofreading tool is your new best friend.
+        <h2>The Danger of Bad Grammar</h2> 
+        Even in these days of text speak, 120-character thoughts, and casual blogging, grammar and spelling still count. We believe the ideas expressed are more important, but these ideas may not reach anyone if they're delivered messily.
+        Hence, poor grammar can affect your career. Many studies have proven that poor communication on the job causes bad impressions, errors, delays, and lost clients or deals.
+        Off the clock, communication problems lead to distrust and misunderstandings. And if you’re a student, English errors result in low marks. Whatever the case, we can help you prevent those errors.
+        Take a look at our infographics and blog for easy but detailed explanations of even hard-to-grasp topics. In a hurry? Use our online grammar and spell checker, and in a minute, you'll be certain that you're putting out quality material for your readers
+        </p>
+        
+</div>
+    
+    
+{% endblock content %}
